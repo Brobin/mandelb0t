@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 
 from PIL import Image
 import tweepy
 import time
 import random
+import os
 from settings import *
 from local_settings import *
 
@@ -51,7 +53,8 @@ def mandelbrot():
 
     #Save the image
     millis = int(round(time.time() * 1000))
-    name = "images/mandelb0t_{0}.png".format(millis)
+    directory = os.path.dirname(os.path.realpath(__file__))
+    name = "{0}/images/mandelb0t_{1}.png".format(directory, millis)
     image.save(name, "PNG")
     return name
 
