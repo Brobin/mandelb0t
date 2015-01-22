@@ -48,4 +48,4 @@ def random_seeded_rgb(seed):
             b = (random.randint(128,256) + seed[2]) / 2
             rgb.append([r,g,b])
             dark = True
-    return rgb
+    return [rgb, seed]

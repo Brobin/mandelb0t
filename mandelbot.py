@@ -50,7 +50,9 @@ def mandelbrot():
     lutx = [j * (xb-xa) / (size - 1) + xa for j in xrange(size)]
 
     #Get the random rgb values for coloring
-    rgb = random_pastel_rgb()
+    color_set = random_pastel_rgb()
+    rgb = color_set[0]
+    seed = color_set[1]
 
     #Create the mandelbrot set
     for y in xrange(size):
@@ -74,9 +76,11 @@ def mandelbrot():
     name = "{0}/images/mandelb0t_{1}.png".format(directory, millis)
     image.save(name, "PNG")
 
-    return name
+    return [name, seed]
 
-image = mandelbrot()
+result = mandelbrot()
+image = result[0]
+seed = result[1]
 
 #Tweet the status with the image
-api.update_with_media(image)
+api.update_with_media(image, status=str(seed))
