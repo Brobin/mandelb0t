@@ -50,8 +50,8 @@ def mandelbrot():
             mtx[x, y] =  r,g,b
 
     #Save the image
-    date = time.strftime("%Y_%m_%d")
-    name = "images/mandelb0t_{0}.png".format(date)
+    millis = int(round(time.time() * 1000))
+    name = "images/mandelb0t_{0}.png".format(millis)
     image.save(name, "PNG")
     return name
 
