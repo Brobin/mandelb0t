@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from PIL import Image
+from progressive.bar import Bar
 import tweepy
 import time
 import random
@@ -31,6 +32,7 @@ class MandelBot():
         #Get the random rgb values for coloring
         self.generator = ColorGenerator(64)
         self.rgb = self.generator.random_seeded_rgb()
+        #self.rgb.sort(key = lambda row: row[0] + row[1] + row[2])
         self.seed = self.generator.seed
 
     def generate_image(self):
@@ -46,6 +48,14 @@ class MandelBot():
         max_iterations = 256
         size = 512
 
+        # progress bar
+        bar = Bar(max_value=size,
+            width="40%",
+            title="Mandelbrot",
+            fallback=True)
+        bar.cursor.clear_lines(2)
+        bar.cursor.save()
+
         #Create a new image
         image = Image.new("RGB", (size, size))
         mtx = image.load()
@@ -54,6 +64,8 @@ class MandelBot():
 
         #Create the mandelbrot set
         for y in xrange(size):
+            bar.cursor.restore()
+            bar.draw(value=y+1)
             cy = y * (yb - ya) / (size - 1)  + ya
             for x in xrange(size):
                 c = complex(lutx[x], cy)

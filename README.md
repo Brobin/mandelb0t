@@ -24,4 +24,5 @@ To run it yourself, install the dependencies and then fill out the settings with
 
 ### Dependencies
 - tweepy
+- progressive
 - PIL
