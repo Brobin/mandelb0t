@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from PIL import Image
-from progressive.bar import Bar
 import tweepy
 import time
 import random
@@ -21,19 +20,11 @@ class MandelBot():
     """
 
     def __init__(self):
-        #Make the OAuth connection
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.secure = True
-        auth.set_access_token(access_token, access_token_secret)
-
-        #Connect to the API
-        self.api = tweepy.API(auth)
-
         #Get the random rgb values for coloring
         self.generator = ColorGenerator(64)
-        self.rgb = self.generator.random_seeded_rgb()
+        self.rgb = self.generator.sort_dark()
         #self.rgb.sort(key = lambda row: row[0] + row[1] + row[2])
-        self.seed = self.generator.seed
+        self.mix = self.generator.mix
 
     def generate_image(self):
         """
@@ -48,14 +39,6 @@ class MandelBot():
         max_iterations = 256
         size = 512
 
-        # progress bar
-        bar = Bar(max_value=size,
-            width="40%",
-            title="Mandelbrot",
-            fallback=True)
-        bar.cursor.clear_lines(2)
-        bar.cursor.save()
-
         #Create a new image
         image = Image.new("RGB", (size, size))
         mtx = image.load()
@@ -64,8 +47,6 @@ class MandelBot():
 
         #Create the mandelbrot set
         for y in xrange(size):
-            bar.cursor.restore()
-            bar.draw(value=y+1)
             cy = y * (yb - ya) / (size - 1)  + ya
             for x in xrange(size):
                 c = complex(lutx[x], cy)
@@ -91,10 +72,17 @@ class MandelBot():
         return self.name
 
     def send_tweet(self):
+        #Make the OAuth connection
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.secure = True
+        auth.set_access_token(access_token, access_token_secret)
+
+        #Connect to the API
+        self.api = tweepy.API(auth)
         #Tweet the status with the image
-        self.api.update_with_media(image, status=str(self.seed))
+        self.api.update_with_media(image, status=str(self.mix))
 
 
 bot = MandelBot()
 image = bot.generate_image()
-bot.send_tweet()
+#bot.send_tweet()
