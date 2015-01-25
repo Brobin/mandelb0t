@@ -22,9 +22,9 @@ class MandelBot():
     def __init__(self):
         #Get the random rgb values for coloring
         self.generator = ColorGenerator(64)
-        self.rgb = self.generator.sort_dark()
+        self.rgb = self.generator.random_rgb()
         #self.rgb.sort(key = lambda row: row[0] + row[1] + row[2])
-        self.mix = self.generator.mix
+        self.message = self.generator.message
 
     def generate_image(self):
         """
@@ -80,9 +80,10 @@ class MandelBot():
         #Connect to the API
         self.api = tweepy.API(auth)
         #Tweet the status with the image
-        self.api.update_with_media(image, status=str(self.mix))
+        self.api.update_with_media(image, status=str(self.message))
 
 
 bot = MandelBot()
 image = bot.generate_image()
-#bot.send_tweet()
+print(bot.message)
+bot.send_tweet()

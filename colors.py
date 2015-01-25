@@ -12,6 +12,24 @@ class ColorGenerator():
         if mix is None:
             mix = self.generate_mix()
         self.mix = mix
+        self.message = mix
+
+    def random_rgb(self):
+        method = random.randint(0,1)
+        if method == 0:
+            rgb = self.completely_random_rgb()
+            self.message = "Completely random color scheme"
+        else:
+            rgb = self.random_mixed_rgb()
+            self.message = "Random color scheme, based off of " + str(self.mix)
+        sort = random.randint(0,2)
+        if sort == 0:
+            rgb = self.sort_light(rgb)
+            self.message += ", sorted by lightness."
+        elif sort == 1:
+            rgb = self.sort_dark(rgb)
+            self.message += ", sorted by darkness."
+        return rgb
 
     def generate_mix(self):
         """
@@ -25,7 +43,7 @@ class ColorGenerator():
         self.mix.append(random.randint(0,256))
         return self.mix
 
-    def random_rgb(self):
+    def completely_random_rgb(self):
         """
         Generates a completely random set of colors. The nature of
         the randomness generally makes it so that the colors
@@ -37,22 +55,6 @@ class ColorGenerator():
             g = random.randint(0,256)
             b = random.randint(0,256)
             rgb.append([r,g,b])
-        return rgb
-
-    def sort_light(self):
-        """
-        Creates a set of RBG colors roughly sorted by lightness.
-        """
-        rgb = self.random_mixed_rgb()
-        rgb.sort(key=lambda x: x[0] + x[1] + x[2])
-        return rgb
-
-    def sort_dark(self):
-        """
-        Creates a set of RBG colors roughly sorted by darkness.
-        """
-        rgb = self.random_mixed_rgb()
-        rgb.sort(key=lambda x: 765 - x[0] - x[1] - x[2])
         return rgb
 
     def random_mixed_rgb(self):
@@ -71,4 +73,18 @@ class ColorGenerator():
             g = (random.randint(min, max) + self.mix[1]) / 2
             b = (random.randint(min, max) + self.mix[2]) / 2
             rgb.append([r,g,b])
+        return rgb
+
+    def sort_light(self, rgb):
+        """
+        Creates a set of RBG colors roughly sorted by lightness.
+        """
+        rgb.sort(key=lambda x: x[0] + x[1] + x[2])
+        return rgb
+
+    def sort_dark(self, rgb):
+        """
+        Creates a set of RBG colors roughly sorted by darkness.
+        """
+        rgb.sort(key=lambda x: 765 - x[0] - x[1] - x[2])
         return rgb
