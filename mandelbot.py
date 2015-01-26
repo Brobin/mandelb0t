@@ -37,7 +37,7 @@ class MandelBot():
         ya = -1.5
         yb = 1.5
         max_iterations = 256
-        size = 512
+        size = 1024
 
         #Create a new image
         image = Image.new("RGB", (size, size))
