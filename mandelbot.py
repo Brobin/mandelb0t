@@ -85,5 +85,4 @@ class MandelBot():
 
 bot = MandelBot()
 image = bot.generate_image()
-print(bot.message)
 bot.send_tweet()

@@ -79,12 +79,12 @@ class ColorGenerator():
         """
         Creates a set of RBG colors roughly sorted by lightness.
         """
-        rgb.sort(key=lambda x: x[0] + x[1] + x[2])
+        rgb.sort(key=lambda x: 0.2126*x[0] + 0.7152*x[1] + 0.0722*x[2])
         return rgb
 
     def sort_dark(self, rgb):
         """
         Creates a set of RBG colors roughly sorted by darkness.
         """
-        rgb.sort(key=lambda x: 765 - x[0] - x[1] - x[2])
+        rgb.sort(key=lambda x: 255 - (0.2126*x[0] + 0.7152*x[1] + 0.0722*x[2]))
         return rgb
