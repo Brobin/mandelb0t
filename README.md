@@ -16,7 +16,7 @@ I slightly modified the generation of colors so they are random. First I randoml
 
 There are 256 layers in this rendering of the mandelbrot set, so each color is repeated once every 64 layers. Additionally, I added another factor to alternate between dark and light colors, making each layer more distinguishable.
 
-This algorithm makes it so that there are 64*256^4 (274,877,906,944) possible color combinations for the mandelbrot set, essentially making each one completely unique.
+This algorithm makes it so that there are 64*256^3 (1,073,741,824) possible color combinations for the mandelbrot set, essentially making each one completely unique.
 
 ### Fork it
 

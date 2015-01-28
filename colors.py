@@ -22,11 +22,11 @@ class ColorGenerator():
         else:
             rgb = self.random_mixed_rgb()
             self.message = "Random color scheme, based off of " + str(self.mix)
-        sort = random.randint(0,2)
+        sort = random.randint(0,1)
         if sort == 0:
             rgb = self.sort_light(rgb)
             self.message += ", sorted by lightness."
-        elif sort == 1:
+        else:
             rgb = self.sort_dark(rgb)
             self.message += ", sorted by darkness."
         return rgb
