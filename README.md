@@ -1,6 +1,6 @@
 # mandelb0t
 
-Mandelb0t is a Twitter bot that generates an image of the Mandelbrot set and posts it to Twitter! Currently it functions as a cron job, running once a day. Eventually I plan to host it somewhere where it can continuously run and interact with other Twitter users.
+Mandelb0t is a Twitter bot that generates an image of the Mandelbrot set and posts it to Twitter! Currently it functions as a cron job, running every two hours. Eventually I plan to host it somewhere where it can continuously run and interact with other Twitter users.
 
 ####Follow [@mandelb0t](https://twitter.com/mandelb0t) on Twitter!
 
@@ -8,7 +8,7 @@ Mandelb0t is a Twitter bot that generates an image of the Mandelbrot set and pos
 
 The [Mandelbrot Set](http://en.wikipedia.org/wiki/Mandelbrot_set) is a mathematical representation of complex numbers that when rendered can create beautiful images.
 
-Many thanks to [Andrew Lewis ](http://code.activestate.com/recipes/577111-mandelbrot-fractal-using-pil/) for the beautiful optimized code for generating the mandelbrot set.
+Thanks to [Andrew Lewis ](http://code.activestate.com/recipes/577111-mandelbrot-fractal-using-pil/) for the optimized code for generating the mandelbrot set.
 
 ### Coloring of the set
 
@@ -21,7 +21,3 @@ This algorithm makes it so that there are 64*256^3 (1,073,741,824) possible colo
 ### Fork it
 
 To run it yourself, install the dependencies and then fill out the settings with your own api access keys.
-
-### Dependencies
-- tweepy
-- PIL
