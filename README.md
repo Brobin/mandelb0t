@@ -23,9 +23,11 @@ This algorithm makes it so that there are 64*256^3 (1,073,741,824) possible colo
 Here are a couple of my favorites so far.
 
 Purple
+
 ![](https://pbs.twimg.com/media/CByynw8UIAEU4-s.png)
 
 Blue
+
 ![](https://pbs.twimg.com/media/CALzBRKUQAEpx-j.png)
 
 
