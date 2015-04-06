@@ -18,6 +18,14 @@ There are 256 layers in this rendering of the mandelbrot set, so each color is r
 
 This algorithm makes it so that there are 64*256^3 (1,073,741,824) possible color combinations for the mandelbrot set, essentially making each one completely unique.
 
-### Fork it
+### Examples!
 
-To run it yourself, install the dependencies and then fill out the settings with your own api access keys.
+Here are a couple of my favorites so far.
+
+Purple
+![](https://pbs.twimg.com/media/CByynw8UIAEU4-s.png)
+
+Blue
+![](https://pbs.twimg.com/media/CALzBRKUQAEpx-j.png)
+
+
